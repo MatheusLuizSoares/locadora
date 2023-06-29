@@ -1,0 +1,37 @@
+{% extends '__base__.html' %}
+
+{% block main %}
+<div class="center">
+    <h1>Editando seus dados, {{ user.name }}</h1>
+
+    <form action="/user/update/{{ user.id }}" method="POST" enctype="multipart/form-data">
+        <div class="input__container">
+            <label for="name">Nome</label>
+            <input class="input__field" name="name" id="name" type="text" value="{{ user.name }}">
+        </div>
+        <div class="input__container">
+            <label for="email">Email</label>
+            <input class="input__field" name="email" id="email" type="text" value="{{ user.email }}">
+        </div>
+        <div class="input__container">
+            <label for="cpf">CPF</label>
+            <input class="input__field" name="cpf" id="cpf" type="text" value="{{ user.cpf }}">
+        </div>
+        <div class="input__container">
+            <label for="birth_date">Data de nascimento</label>
+            <input class="input__field" type="date" name="birth_date" id="birth_date" value="{{ user.birth_date.strftime('%Y-%m-%d') }}">
+        </div>
+        <div class="input__container">
+            <label for="photo">Foto de perfil</label>
+            <input class="input__field" type="file" name="photo" id="photo">
+        </div>
+        <div class="input__container">
+            <label for="password">Digite sua senha para confirmar</label>
+            <input class="input__field" name="password" id="password" type="password" value="">
+        </div>
+        <div class="input__container">
+            <input class="input__field" type="submit" value="Editar">
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends '__base__.html' %}
+
+
+{% block main %}
+<div class="center">
+    <h1>Tem certeza que deseja alugar o filme {{ movie.title }}?</h1>
+
+    <p>Alugar esse filme adicionará R${{ movie.rent_price }} a sua mensalidade</p>
+
+    <form action="/rent/{{ movie.id }}" method="POST">
+        <input class="input__field" type="submit" value="Confirmar">
+    </form>
+
+    <a href="/filme/{{ movie.id }}">Cancelar</a>
+</div>
+{% endblock %}

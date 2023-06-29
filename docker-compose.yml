@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+    database:
+        image: mysql
+        container_name: mysql-a3
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: teste123
+            MYSQL_PASSWORD: teste123
+            MYSQL_DATABASE: a3-database
+            MYSQL_USER: admin
+            TZ: America/Bahia
+    
+        ports:
+            - 3306:3306
+
+        networks:
+            - database-network
+
+    sgbd:
+        image: adminer
+        container_name: adminer-a3
+        restart: always
+        ports:
+            - 8080:8080
+        
+        networks:
+            - database-network
+
+networks:
+    database-network:
+        driver: bridge

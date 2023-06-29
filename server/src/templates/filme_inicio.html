@@ -1,0 +1,27 @@
+{% extends '__base__.html' %}
+
+
+{% block main %}
+    <div class="movie__container">
+        <h1>{{ movie.title }}</h1>
+        {% if movie.photo %}
+            <img src="{{ url_for('static', filename=movie.photo) }}" alt="Foto de capa {{ movie.title }}" width="200px">
+        {% endif %}
+
+        <div class="body__container">
+            <p>Ano de lançamento: {{ movie.year }}</p>
+            <p>Gênero do filme: {{ movie.genre }}</p>
+            <p>Valor do aluguel: R${{ movie.rent_price }}</p>
+        </div>
+
+        <div class="buttons__container">
+            <a href="/alugar/{{ movie.id }}">Alugar filme</a>
+            {% if user.access == "admin" %}
+                <a href="/filme/editar/{{ movie.id }}">Editar filme</a>
+                <a href="/filme/apagar/{{ movie.id }}">Apagar filme</a>
+            {% endif %}
+        </div>
+    
+        
+    </div>
+{% endblock %}

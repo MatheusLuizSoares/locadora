@@ -1,0 +1,210 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }} | A3 Locadora</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap%27');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Roboto:wght@300&display=swap%27');
+
+        :root {
+            --button-color-primary: #951212;
+            --button-color-secondary: #bebebe;
+            --background-color-primary: #430303;
+        }
+        
+        body {
+            background-image: url("https://images.unsplash.com/photo-1518893063132-36e46dbe2428?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80");
+            backdrop-filter: blur(10px);
+            background-color: var(--background-color-primary);
+            color: #FFFFFF;
+
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 700;
+            line-height: 66px;
+
+            margin: 0;
+            padding: 0;
+
+            filter: drop-shadow(0.2 0.2 0.50rem black);
+        }
+
+        header {
+            display: flex;
+            filter: drop-shadow(0.2 0.2 0.50rem black);
+            padding: 1rem 2rem;
+        }
+
+        header ul {
+            display: flex;
+            justify-content: space-around;
+            width: 40vw;
+            filter: drop-shadow(0.2 0.2 0.50rem black);
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            gap: 0;
+            filter: drop-shadow(0.2 0.2 0.50rem black);
+            padding: 20px;
+        }
+
+        .input__form {
+            margin-bottom: 10vh;
+        }
+
+        .input__container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input__field {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 22px;
+            padding:10px;
+            font-size: 16px;
+            border: none;
+            width: 200px;
+        }
+
+        .logo__container {
+            width: 60vw;
+        }
+
+        .button-primary {
+            color: var(--background-color-primary) ;
+            padding: 10px 20px;
+            font-size:16px ;
+            border-radius: 22px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            filter: drop-shadow(0.2rem 0.2rem 0.50rem black);
+        }
+
+        .button-secondary {
+            background-color: var(--button-color-secondary);
+            color: var(--background-color-primary);
+            cursor:pointer;
+            filter: drop-shadow(0.2rem 0.2rem 0.50rem black);
+        }
+
+        .title__container h2 {
+            filter: drop-shadow(0.2rem 0.2rem 0.50rem black);
+            text-align: center;
+        }
+
+        .movies__container {
+            display: grid;
+            width: 100%;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            filter: drop-shadow(0.2rem 0.2rem 0.50rem black);
+        }
+        
+        .body__container{
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 300;
+        }
+
+
+        .movie__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            filter: drop-shadow(0.2rem 0.2rem 0.50rem black);
+        }
+
+        .movie__container img {
+            border-radius: 30px;
+        }
+
+        .movie__container p {
+            height: 2rem;
+            margin: 0;
+        }
+
+        .name__container {
+            text-align: center;
+        }
+
+        .buttons__container {
+           padding:10px 20px ;
+            margin-top: 1rem;
+            border-radius: 40px;
+            border:none ;
+            gap: 0.5rem;
+            display: flex;
+        }
+
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.5s;
+            padding: 0 1rem;
+            filter: drop-shadow(0.2rem 0.2rem 0.50rem black);
+        }
+
+        a:hover {
+            color: rgb(163, 0, 0);
+            filter: drop-shadow(0rem 0rem 0.20rem rgb(150, 150, 150));
+        }
+
+        li {
+            list-style: none;
+        }
+
+        footer {
+            height: 10vh;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo__container">
+            <h1>
+                <a href="/">FLAXFLIX</a>
+            </h1>
+        </div>
+
+        <nav>
+            <ul>
+                {% if user %}
+                    <li><a href="/sair">Sair</a></li>
+                    <li><a href="/perfil">Meu perfil</a></li>
+                {% else %}
+                    <li><a href="/entrar">Faça login </a></li>
+                    <li><a href="/registrar">Cadastre-se </a></li>
+                {% endif %}
+                {% if user.access == "admin" %}<li><a href="/filme/novo">Cadastrar um novo filme</a></li>{% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% if flash %}
+            {{ flash }}
+        {% endif %}
+        
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

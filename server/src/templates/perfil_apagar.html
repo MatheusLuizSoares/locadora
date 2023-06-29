@@ -1,0 +1,13 @@
+{% extends '__base__.html' %}
+
+{% block main %}
+<div class="center">
+    <h1>Tem certeza que quer apagar seu perfil, {{ user.name }}?</h1>
+
+    <form action="/user/delete/{{ user.id }}" method="POST">
+        <div>
+            <input class="input__field" type="submit" value="Apagar">
+        </div>
+    </form>
+</div>
+{% endblock %}

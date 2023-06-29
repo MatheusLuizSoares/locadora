@@ -1,0 +1,24 @@
+{% extends '__base__.html' %}
+
+{% block main %}
+<div class="center">
+    <div class="header">
+        <h1>Conecte-se na sua conta</h1>
+    </div>
+
+    <form action="/login" method="POST">
+        <div class="input__container">
+            <label for="email">Email</label>
+            <input name="email" id="email" type="text" class="input__field">
+        </div>
+        <div class="input__container">
+            <label for="password">Senha</label>
+            <input name="password" id="password" type="password" class="input__field">
+        </div>
+        <div class="input__container">
+            <span>Não tem conta? <a href="/registrar">Cadastre-se</a></span>
+            <input type="submit" value="Entrar" class="input__field">
+        </div>
+    </form>
+</div>
+{% endblock %}

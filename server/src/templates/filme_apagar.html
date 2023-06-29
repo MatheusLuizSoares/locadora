@@ -1,0 +1,15 @@
+{% extends '__base__.html' %}
+
+{% block main %}
+
+<h1>Tem certeza que deseja apagar o filme {{ movie.title }}?</h1>
+
+<form action="/movie/delete/{{ movie.id }}" method="POST">
+    <div>
+        <input class="input__field" type="submit" value="Apagar filme">
+    </div>
+
+    <a href="/filme/{{ movie.id }}">Voltar</a>
+</form>
+
+{% endblock %}

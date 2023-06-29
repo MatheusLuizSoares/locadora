@@ -1,0 +1,41 @@
+{% extends '__base__.html' %}
+
+{% block main %}
+    <div class="center">
+        <h1>
+            Seu perfil, {{ user.name }}
+        </h1>
+
+        {% if user.photo %}
+            <img src="{{ url_for('static', filename=user.photo) }}" alt="foto {{ user.name }}" width="100px">
+        {% endif %}
+
+        <div class="body__container">
+            <p><span>Email: {{ user.email }}</span><p>
+            <p><span>CPF: {{ user.cpf }}</span><p>
+            <p><span>Idade: {{ user.age }}</span><p>    
+            <p>Sua mensalidade está em R${{ total_rent }}</p>
+        </div>
+
+        <p>
+            <a href="/perfil/editar">Edite seu perfil</a>
+            <a href="/perfil/apagar">Apagar seu perfil</a>
+        </p>
+        
+        <h2>Filmes alugados</h2>
+    </div>
+
+        {% if rented_movies %}
+
+        <div class="movies__container">
+            {% for movie in rented_movies %}
+                <a href="/filme/{{ movie.id }}">
+                    <img src="{{ url_for('static', filename=movie.photo) }}" alt="{{ movie.title }}" width="200px">
+                    <p>{{ movie.title }}</p>
+                    <span>{{ movie.year }} | {{ movie.genre }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+{% endblock %}

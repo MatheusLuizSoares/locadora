@@ -1,0 +1,25 @@
+{% extends '__base__.html' %}
+
+{% block main %}
+    <div class="title__container">
+        <h2>Bem vindo {{ user.name }}</h2>
+    </div>
+    <div class="movies__container">
+        {% if movies %}
+            {% for movie in movies %}
+                <div>
+                    <a href="/filme/{{ movie.id }}" class="movie__container">
+                        <img src="{{ url_for('static', filename=movie.photo) }}" alt="{{ movie.title }}" width="300px">
+                        <p>{{ movie.title }}</p>
+                        <span>{{ movie.year }} | {{ movie.genre }}</span>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+                <div>
+                    Ainda não temos filmes 😭
+                </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
